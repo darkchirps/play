@@ -29,5 +29,13 @@ window.GAME_CONFIG = [
     url: "./TheEggHero/index.html",
     rating: "4.7",
     description: "高速反应和路线选择的竞速体验。"
+  },
+  {
+    name: "泡泡龙",
+    category: "休闲",
+    icon: "./PuzzleBobble/favicon.8de18.ico",
+    url: "./PuzzleBobble/index.html",
+    rating: "4.8",
+    description: "高速反应和路线选择的竞速体验。"
   }
 ];
