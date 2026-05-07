@@ -19,7 +19,6 @@ window.GAME_CONFIG = [
     icon: "./PassExpert/favicon.8de18.ico",
     url: "./PassExpert/index.html",
     rating: "4.9",
-    featured: true,
     description: "点击即可进入本地 PassingExpert 游戏。"
   },
   {
@@ -68,6 +67,31 @@ window.GAME_CONFIG = [
     icon: "./Screw/favicon.8de18.ico",
     url: "./Screw/index.html",
     rating: "4.8",
+    description: "高速反应和路线选择的竞速体验。"
+  },
+  {
+    name: "麻将挪对对",
+    category: "休闲",
+    icon: "./MahjongCrash/favicon.8de18.ico",
+    url: "./MahjongCrash/index.html",
+    rating: "4.8",
+    description: "高速反应和路线选择的竞速体验。"
+  },
+  {
+    name: "修了个仙",
+    category: "割草",
+    icon: "./Immortal/favicon.8de18.ico",
+    url: "./Immortal/index.html",
+    rating: "4.8",
+    description: "高速反应和路线选择的竞速体验。"
+  },
+  {
+    name: "矿井",
+    category: "休闲",
+    icon: "./MergeMine/favicon.8de18.ico",
+    url: "./MergeMine/index.html",
+    rating: "4.9",
+    featured: true,
     description: "高速反应和路线选择的竞速体验。"
   }
 ];
