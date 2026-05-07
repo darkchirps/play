@@ -37,5 +37,37 @@ window.GAME_CONFIG = [
     url: "./PuzzleBobble/index.html",
     rating: "4.8",
     description: "高速反应和路线选择的竞速体验。"
+  },
+  {
+    name: "幽灵射手",
+    category: "冒险",
+    icon: "./PhantomMarksman/favicon.ico",
+    url: "./PhantomMarksman/index.html",
+    rating: "4.8",
+    description: "高速反应和路线选择的竞速体验。"
+  },
+  {
+    name: "卡牌接龙",
+    category: "益智",
+    icon: "./Solitaire/favicon.ico",
+    url: "./Solitaire/index.html",
+    rating: "4.8",
+    description: "高速反应和路线选择的竞速体验。"
+  },
+  {
+    name: "海王挑战",
+    category: "冒险",
+    icon: "./Aquaman/favicon.8de18.ico",
+    url: "./Aquaman/index.html",
+    rating: "4.8",
+    description: "高速反应和路线选择的竞速体验。"
+  },
+  {
+    name: "打螺丝",
+    category: "冒险",
+    icon: "./Screw/favicon.8de18.ico",
+    url: "./Screw/index.html",
+    rating: "4.8",
+    description: "高速反应和路线选择的竞速体验。"
   }
 ];

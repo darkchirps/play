@@ -412,6 +412,19 @@
       backdrop-filter: blur(10px);
     }
 
+    .card .favorite-button.active {
+      color: #101116;
+      border-color: var(--accent-2);
+      background: var(--accent-2);
+      box-shadow: 0 8px 20px rgba(255, 204, 102, .22);
+    }
+
+    .card .favorite-button.active:hover,
+    .card .favorite-button.active:focus-visible {
+      border-color: #ffe08a;
+      background: #ffd77a;
+    }
+
     .card-media img {
       width: 84px;
       height: 84px;
@@ -851,6 +864,7 @@
     const allCategory = "全部";
     const favoriteCategory = "我的收藏";
     let activeCategory = allCategory;
+    let favoritesOnly = false;
     const pageUrl = new URL(window.location.href);
     const launchIndex = Number.parseInt(pageUrl.searchParams.get("game"), 10);
     const launchedGame = Number.isInteger(launchIndex) ? games[launchIndex] : null;
@@ -1270,23 +1284,29 @@
 
     function renderFilters() {
       filters.innerHTML = uniqueCategories().map((category) => `
-        <button class="filter ${category === activeCategory ? "active" : ""}" type="button" data-category="${category}">
+        <button class="filter ${isActiveFilter(category) ? "active" : ""}" type="button" data-category="${category}">
           ${category}
         </button>
       `).join("");
     }
 
+    function isActiveFilter(category) {
+      if (favoritesOnly && activeCategory === allCategory) {
+        return category === favoriteCategory;
+      }
+
+      return category === activeCategory;
+    }
+
     function getVisibleGames() {
       const keyword = searchInput.value.trim().toLowerCase();
       return games.filter((game) => {
-        const matchesCategory =
-          activeCategory === allCategory ||
-          (activeCategory === favoriteCategory && isFavorite(game)) ||
-          game.category === activeCategory;
+        const matchesFavorite = !favoritesOnly || isFavorite(game);
+        const matchesCategory = activeCategory === allCategory || game.category === activeCategory;
         const matchesKeyword = !keyword ||
           game.name.toLowerCase().includes(keyword) ||
           game.category.toLowerCase().includes(keyword);
-        return matchesCategory && matchesKeyword;
+        return matchesFavorite && matchesCategory && matchesKeyword;
       });
     }
 
@@ -1363,7 +1383,18 @@
     filters.addEventListener("click", (event) => {
       const button = event.target.closest("[data-category]");
       if (!button) return;
-      activeCategory = button.dataset.category;
+      const selectedCategory = button.dataset.category;
+
+      if (selectedCategory === favoriteCategory) {
+        favoritesOnly = true;
+        activeCategory = allCategory;
+      } else if (selectedCategory === allCategory) {
+        favoritesOnly = false;
+        activeCategory = allCategory;
+      } else {
+        activeCategory = selectedCategory;
+      }
+
       renderFilters();
       renderGames();
     });
