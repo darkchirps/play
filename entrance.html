@@ -148,6 +148,13 @@
       line-height: 1.65;
     }
 
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
     .featured {
       min-height: 300px;
       border: 1px solid rgba(255, 255, 255, .12);
@@ -184,7 +191,8 @@
 
     .featured h3,
     .featured p,
-    .featured a {
+    .featured a,
+    .featured .recent-actions {
       z-index: 1;
       position: relative;
     }
@@ -214,6 +222,51 @@
       color: #08100d;
       background: var(--accent);
       font-weight: 800;
+    }
+
+    .secondary-link {
+      width: max-content;
+      max-width: 100%;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 16px;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 8px;
+      color: #dfe7f2;
+      background: rgba(255, 255, 255, .06);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .icon-button {
+      width: 38px;
+      height: 38px;
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 8px;
+      color: #dfe7f2;
+      background: rgba(255, 255, 255, .06);
+      cursor: pointer;
+    }
+
+    .icon-button:hover,
+    .icon-button:focus-visible,
+    .secondary-link:hover,
+    .secondary-link:focus-visible {
+      outline: none;
+      border-color: rgba(33, 212, 165, .48);
+      background: rgba(255, 255, 255, .1);
+    }
+
+    .favorite-button.active {
+      color: #101116;
+      border-color: var(--accent-2);
+      background: var(--accent-2);
     }
 
     .toolbar {
@@ -284,6 +337,46 @@
       gap: 16px;
     }
 
+    .recent-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 14px;
+    }
+
+    .recent-card {
+      min-height: 112px;
+      display: grid;
+      grid-template-columns: 74px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 8px;
+      background: rgba(24, 27, 34, .72);
+    }
+
+    .recent-card img {
+      width: 74px;
+      height: 74px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid rgba(255, 255, 255, .14);
+      background: rgba(0, 0, 0, .22);
+    }
+
+    .recent-card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+    }
+
+    .recent-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     .card {
       min-height: 254px;
       border: 1px solid rgba(255, 255, 255, .1);
@@ -291,6 +384,7 @@
       background: rgba(24, 27, 34, .84);
       box-shadow: 0 8px 26px rgba(0, 0, 0, .18);
       overflow: hidden;
+      position: relative;
       transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
 
@@ -304,9 +398,18 @@
       height: 136px;
       display: grid;
       place-items: center;
+      position: relative;
       background:
         linear-gradient(135deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, 0)),
         var(--panel-2);
+    }
+
+    .card .favorite-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(16, 17, 22, .78);
+      backdrop-filter: blur(10px);
     }
 
     .card-media img {
@@ -359,6 +462,13 @@
       font-size: 14px;
     }
 
+    .card-actions {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 38px;
+      gap: 8px;
+      align-items: center;
+    }
+
     .empty {
       display: none;
       padding: 28px;
@@ -367,6 +477,267 @@
       color: var(--muted);
       text-align: center;
       background: rgba(255, 255, 255, .04);
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(5, 7, 10, .72);
+      backdrop-filter: blur(10px);
+    }
+
+    .modal-backdrop[hidden] {
+      display: none;
+    }
+
+    .modal {
+      width: min(520px, 100%);
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 8px;
+      background: #181b22;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .modal-head {
+      display: grid;
+      grid-template-columns: 88px minmax(0, 1fr) 38px;
+      gap: 14px;
+      align-items: center;
+      padding: 16px;
+      background: rgba(255, 255, 255, .04);
+    }
+
+    .modal-head img {
+      width: 88px;
+      height: 88px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid rgba(255, 255, 255, .14);
+      background: rgba(0, 0, 0, .22);
+    }
+
+    .modal-head h2 {
+      margin: 0 0 8px;
+      font-size: 26px;
+      line-height: 1.15;
+      overflow-wrap: anywhere;
+    }
+
+    .modal-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .modal-body {
+      padding: 16px;
+    }
+
+    .modal-body p {
+      margin: 0 0 16px;
+      color: #c4cedb;
+      line-height: 1.6;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .load-notice {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 80;
+      width: min(330px, calc(100% - 32px));
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 8px;
+      color: #dfe7f2;
+      background: rgba(16, 17, 22, .94);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, .42);
+      backdrop-filter: blur(14px);
+    }
+
+    .load-notice[hidden] {
+      display: none;
+    }
+
+    .load-notice h2 {
+      margin: 0 0 6px;
+      color: var(--accent-2);
+      font-size: 15px;
+    }
+
+    .load-notice p {
+      margin: 0 0 12px;
+      color: #c4cedb;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .load-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .load-actions .secondary-link,
+    .load-actions .play-link {
+      min-height: 36px;
+      padding: 0 12px;
+      font-size: 13px;
+    }
+
+    body.game-mode {
+      overflow: hidden;
+      background: #05070a;
+    }
+
+    body.game-mode .shell {
+      display: none;
+    }
+
+    .game-player {
+      position: fixed;
+      inset: 0;
+      background: #05070a;
+    }
+
+    .game-frame {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+      background: #05070a;
+    }
+
+    .return-widget {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 2147483647;
+      color: #f4f7fb;
+      font-family: Inter, "Segoe UI", "Microsoft YaHei", Arial, sans-serif;
+      transform: translate3d(var(--return-x, 16px), var(--return-y, 16px), 0);
+      transition: transform .26s ease;
+      will-change: transform;
+    }
+
+    .return-widget.dragging {
+      transition: none;
+    }
+
+    .return-button {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 8px;
+      color: #08100d;
+      background: var(--accent);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, .36);
+      cursor: pointer;
+      touch-action: none;
+      user-select: none;
+      transition: border-color .18s ease, box-shadow .18s ease, opacity .18s ease, transform .18s ease;
+    }
+
+    .return-button:hover,
+    .return-button:focus-visible {
+      outline: none;
+      border-color: rgba(255, 255, 255, .42);
+      box-shadow: 0 14px 38px rgba(0, 0, 0, .42);
+    }
+
+    .return-widget.collapsed .return-button {
+      opacity: .78;
+    }
+
+    .return-widget.collapsed[data-edge="left"] .return-button,
+    .return-widget.collapsed[data-edge="right"] .return-button {
+      transform: scaleX(.86);
+    }
+
+    .return-widget.collapsed[data-edge="top"] .return-button,
+    .return-widget.collapsed[data-edge="bottom"] .return-button {
+      transform: scaleY(.86);
+    }
+
+    .return-icon {
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .return-menu {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 188px;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 8px;
+      background: rgba(16, 17, 22, .94);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, .42);
+      backdrop-filter: blur(14px);
+    }
+
+    .return-widget[data-menu-x="right"] .return-menu {
+      left: auto;
+      right: 0;
+    }
+
+    .return-widget[data-menu-y="top"] .return-menu {
+      top: auto;
+      bottom: 60px;
+    }
+
+    .return-title {
+      margin-bottom: 4px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .return-current {
+      margin-bottom: 10px;
+      color: #c4cedb;
+      font-size: 12px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .return-link {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      border-radius: 8px;
+      color: #08100d;
+      background: var(--accent-2);
+      font-weight: 800;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     @media (max-width: 760px) {
@@ -425,10 +796,19 @@
       <div class="hero-copy">
         <div class="eyebrow">daily recommendation</div>
         <h2>今日推荐</h2>
+        <div class="hero-actions" id="heroActions"></div>
       </div>
       <article class="featured" id="featuredCard">
         <div class="featured-art" aria-hidden="true"></div>
       </article>
+    </section>
+
+    <section id="recentSection" aria-labelledby="recentTitle" hidden>
+      <div class="section-head">
+        <h2 id="recentTitle">最近玩过</h2>
+        <div class="count" id="recentCount"></div>
+      </div>
+      <div class="recent-grid" id="recentGrid"></div>
     </section>
 
     <section id="games" aria-labelledby="gamesTitle">
@@ -447,6 +827,12 @@
     </section>
   </main>
 
+  <div class="modal-backdrop" id="detailModal" hidden>
+    <article class="modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <div id="detailContent"></div>
+    </article>
+  </div>
+
   <script src="./games-config.js"></script>
   <script>
     const games = Array.isArray(window.GAME_CONFIG) ? window.GAME_CONFIG : [];
@@ -456,10 +842,379 @@
     const gameCount = document.querySelector("#gameCount");
     const emptyState = document.querySelector("#emptyState");
     const featuredCard = document.querySelector("#featuredCard");
-    let activeCategory = "全部";
+    const heroActions = document.querySelector("#heroActions");
+    const recentSection = document.querySelector("#recentSection");
+    const recentGrid = document.querySelector("#recentGrid");
+    const recentCount = document.querySelector("#recentCount");
+    const detailModal = document.querySelector("#detailModal");
+    const detailContent = document.querySelector("#detailContent");
+    const allCategory = "全部";
+    const favoriteCategory = "我的收藏";
+    let activeCategory = allCategory;
+    const pageUrl = new URL(window.location.href);
+    const launchIndex = Number.parseInt(pageUrl.searchParams.get("game"), 10);
+    const launchedGame = Number.isInteger(launchIndex) ? games[launchIndex] : null;
+    const recentStorageKey = "dl9998_recent_games";
+    const favoriteStorageKey = "dl9998_favorite_games";
+    let recentKeys = readStoredList(recentStorageKey);
+    let favoriteKeys = new Set(readStoredList(favoriteStorageKey));
+    let activeDetailIndex = null;
+
+    function platformUrl() {
+      const url = new URL(window.location.href);
+      url.search = "";
+      url.hash = "";
+      return url.toString();
+    }
+
+    function launchUrl(index) {
+      const url = new URL(window.location.href);
+      url.search = "";
+      url.hash = "";
+      url.searchParams.set("game", String(index));
+      return url.toString();
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#39;"
+      }[char]));
+    }
+
+    function readStoredList(key) {
+      try {
+        const value = JSON.parse(localStorage.getItem(key) || "[]");
+        return Array.isArray(value) ? value.filter(Boolean) : [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function writeStoredList(key, value) {
+      try {
+        localStorage.setItem(key, JSON.stringify(value));
+      } catch (error) {
+        // Storage can be unavailable in strict privacy modes; the UI still works for this session.
+      }
+    }
+
+    function gameKey(game) {
+      return game ? `${game.name}|${game.url}` : "";
+    }
+
+    function gameIndex(game) {
+      return games.indexOf(game);
+    }
+
+    function gameByKey(key) {
+      return games.find((game) => gameKey(game) === key);
+    }
+
+    function recentGames() {
+      return recentKeys.map(gameByKey).filter(Boolean).slice(0, 4);
+    }
+
+    function isFavorite(game) {
+      return favoriteKeys.has(gameKey(game));
+    }
+
+    function favoriteLabel(game) {
+      return isFavorite(game) ? "取消收藏" : "收藏";
+    }
+
+    function favoriteGlyph(game) {
+      return isFavorite(game) ? "★" : "☆";
+    }
+
+    function recordGameLaunch(game) {
+      const key = gameKey(game);
+      recentKeys = [key, ...recentKeys.filter((item) => item !== key)].slice(0, 8);
+      writeStoredList(recentStorageKey, recentKeys);
+    }
+
+    function toggleFavorite(game) {
+      const key = gameKey(game);
+      if (favoriteKeys.has(key)) {
+        favoriteKeys.delete(key);
+      } else {
+        favoriteKeys.add(key);
+      }
+
+      writeStoredList(favoriteStorageKey, [...favoriteKeys]);
+      renderFeatured();
+      renderHeroActions();
+      renderRecent();
+      renderGames();
+      if (activeDetailIndex !== null && !detailModal.hidden) {
+        openDetail(activeDetailIndex);
+      }
+    }
+
+    function renderGamePlayer(game) {
+      recordGameLaunch(game);
+      document.body.classList.add("game-mode");
+      document.body.innerHTML = `
+        <section class="game-player" aria-label="${escapeHtml(game.name)}">
+          <iframe
+            class="game-frame"
+            src="${escapeHtml(game.url || "about:blank")}"
+            title="${escapeHtml(game.name)}"
+            allow="autoplay; fullscreen; gamepad; clipboard-read; clipboard-write"
+            allowfullscreen>
+          </iframe>
+          <div class="return-widget" id="returnWidget">
+            <button class="return-button" id="returnToggle" type="button" aria-expanded="false" aria-controls="returnMenu" title="返回游戏平台">
+              <span class="return-icon" aria-hidden="true">⌂</span>
+              <span class="sr-only">返回游戏平台</span>
+            </button>
+            <div class="return-menu" id="returnMenu" hidden>
+              <div class="return-title">DL9998</div>
+              <div class="return-current">${escapeHtml(game.name)}</div>
+              <a class="return-link" href="${platformUrl()}">返回游戏平台</a>
+            </div>
+          </div>
+          <aside class="load-notice" id="loadNotice" ${game.url ? "hidden" : ""}>
+            <h2>游戏可能没有成功打开</h2>
+            <p>${game.url ? "如果画面长时间空白，请重试游戏，或返回游戏平台检查游戏地址。" : "这个游戏还没有配置 url，暂时无法打开。"}</p>
+            <div class="load-actions">
+              <a class="play-link" href="${escapeHtml(window.location.href)}">重试</a>
+              <a class="secondary-link" href="${platformUrl()}">返回平台</a>
+            </div>
+          </aside>
+        </section>
+      `;
+
+      const returnWidget = document.querySelector("#returnWidget");
+      const returnToggle = document.querySelector("#returnToggle");
+      const returnMenu = document.querySelector("#returnMenu");
+      const gameFrame = document.querySelector(".game-frame");
+      const loadNotice = document.querySelector("#loadNotice");
+      const iconSize = 50;
+      const idleDelay = 5000;
+      const visibleWhenCollapsed = 26;
+      let position = { x: 16, y: 16 };
+      let expandedPosition = { ...position };
+      let pointerStart = null;
+      let dragStart = null;
+      let idleTimer = 0;
+      let isDragging = false;
+      let wasDragged = false;
+      let suppressNextClick = false;
+
+      function viewportBounds() {
+        return {
+          width: window.innerWidth,
+          height: window.innerHeight
+        };
+      }
+
+      function clampPosition(nextPosition) {
+        const bounds = viewportBounds();
+        return {
+          x: Math.min(Math.max(nextPosition.x, 0), Math.max(bounds.width - iconSize, 0)),
+          y: Math.min(Math.max(nextPosition.y, 0), Math.max(bounds.height - iconSize, 0))
+        };
+      }
+
+      function updateMenuPlacement(nextPosition) {
+        const bounds = viewportBounds();
+        returnWidget.dataset.menuX = nextPosition.x + 188 > bounds.width - 8 ? "right" : "left";
+        returnWidget.dataset.menuY = nextPosition.y > bounds.height / 2 ? "top" : "bottom";
+      }
+
+      function setWidgetPosition(nextPosition) {
+        position = nextPosition;
+        returnWidget.style.setProperty("--return-x", `${Math.round(nextPosition.x)}px`);
+        returnWidget.style.setProperty("--return-y", `${Math.round(nextPosition.y)}px`);
+        updateMenuPlacement(nextPosition);
+      }
+
+      function setMenuOpen(isOpen) {
+        returnMenu.hidden = !isOpen;
+        returnToggle.setAttribute("aria-expanded", String(isOpen));
+      }
+
+      function edgeFor(nextPosition) {
+        const bounds = viewportBounds();
+        const distances = [
+          ["left", nextPosition.x],
+          ["right", bounds.width - nextPosition.x - iconSize],
+          ["top", nextPosition.y],
+          ["bottom", bounds.height - nextPosition.y - iconSize]
+        ];
+
+        return distances.sort((a, b) => a[1] - b[1])[0][0];
+      }
+
+      function collapseWidget() {
+        if (isDragging) return;
+
+        setMenuOpen(false);
+        expandedPosition = clampPosition(expandedPosition);
+        const bounds = viewportBounds();
+        const edge = edgeFor(expandedPosition);
+        const nextPosition = { ...expandedPosition };
+
+        if (edge === "left") {
+          nextPosition.x = -(iconSize - visibleWhenCollapsed);
+        } else if (edge === "right") {
+          nextPosition.x = bounds.width - visibleWhenCollapsed;
+        } else if (edge === "top") {
+          nextPosition.y = -(iconSize - visibleWhenCollapsed);
+        } else {
+          nextPosition.y = bounds.height - visibleWhenCollapsed;
+        }
+
+        returnWidget.dataset.edge = edge;
+        returnWidget.classList.add("collapsed");
+        setWidgetPosition(nextPosition);
+      }
+
+      function expandWidget() {
+        if (!returnWidget.classList.contains("collapsed")) return false;
+
+        returnWidget.classList.remove("collapsed");
+        setWidgetPosition(clampPosition(expandedPosition));
+        return true;
+      }
+
+      function resetIdleTimer() {
+        window.clearTimeout(idleTimer);
+        idleTimer = window.setTimeout(collapseWidget, idleDelay);
+      }
+
+      function noteWidgetActivity() {
+        expandWidget();
+        resetIdleTimer();
+      }
+
+      setWidgetPosition(position);
+      resetIdleTimer();
+
+      let loadTimer = window.setTimeout(() => {
+        loadNotice.hidden = false;
+      }, 12000);
+
+      gameFrame.addEventListener("load", () => {
+        window.clearTimeout(loadTimer);
+      });
+
+      gameFrame.addEventListener("error", () => {
+        window.clearTimeout(loadTimer);
+        loadNotice.hidden = false;
+      });
+
+      returnToggle.addEventListener("click", () => {
+        if (suppressNextClick) {
+          suppressNextClick = false;
+          resetIdleTimer();
+          return;
+        }
+
+        const isOpen = returnMenu.hidden;
+        noteWidgetActivity();
+        setMenuOpen(isOpen);
+      });
+
+      returnToggle.addEventListener("pointerenter", (event) => {
+        if (event.pointerType !== "mouse") return;
+        if (expandWidget()) resetIdleTimer();
+      });
+
+      returnToggle.addEventListener("pointerdown", (event) => {
+        if (event.pointerType === "mouse" && event.button !== 0) return;
+
+        if (expandWidget()) {
+          suppressNextClick = true;
+          resetIdleTimer();
+          return;
+        }
+
+        isDragging = true;
+        wasDragged = false;
+        pointerStart = { x: event.clientX, y: event.clientY };
+        dragStart = { ...position };
+        setMenuOpen(false);
+        returnWidget.classList.add("dragging");
+        returnToggle.setPointerCapture(event.pointerId);
+        window.clearTimeout(idleTimer);
+      });
+
+      returnToggle.addEventListener("pointermove", (event) => {
+        if (!isDragging || !pointerStart || !dragStart) return;
+
+        const dx = event.clientX - pointerStart.x;
+        const dy = event.clientY - pointerStart.y;
+        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) wasDragged = true;
+
+        expandedPosition = clampPosition({
+          x: dragStart.x + dx,
+          y: dragStart.y + dy
+        });
+        setWidgetPosition(expandedPosition);
+      });
+
+      function endDrag(event) {
+        if (!isDragging) return;
+
+        isDragging = false;
+        pointerStart = null;
+        dragStart = null;
+        returnWidget.classList.remove("dragging");
+
+        if (returnToggle.hasPointerCapture(event.pointerId)) {
+          returnToggle.releasePointerCapture(event.pointerId);
+        }
+
+        if (wasDragged) suppressNextClick = true;
+        resetIdleTimer();
+      }
+
+      returnToggle.addEventListener("pointerup", endDrag);
+      returnToggle.addEventListener("pointercancel", endDrag);
+
+      document.addEventListener("click", (event) => {
+        if (event.target.closest(".return-widget")) return;
+        setMenuOpen(false);
+        resetIdleTimer();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+        setMenuOpen(false);
+        resetIdleTimer();
+      });
+
+      window.addEventListener("resize", () => {
+        expandedPosition = clampPosition(expandedPosition);
+        if (returnWidget.classList.contains("collapsed")) {
+          collapseWidget();
+        } else {
+          setWidgetPosition(expandedPosition);
+        }
+      });
+    }
+
+    if (launchedGame) {
+      renderGamePlayer(launchedGame);
+    } else if (pageUrl.searchParams.has("game")) {
+      window.location.replace(platformUrl());
+    } else {
 
     function uniqueCategories() {
-      return ["全部", ...new Set(games.map((game) => game.category))];
+      return [allCategory, favoriteCategory, ...new Set(games.map((game) => game.category))];
+    }
+
+    function renderHeroActions() {
+      const latest = recentGames()[0];
+      heroActions.innerHTML = latest ? `
+        <a class="play-link" href="${launchUrl(gameIndex(latest))}" target="_blank" rel="noopener">继续游戏</a>
+        <button class="secondary-link" type="button" data-detail-index="${gameIndex(latest)}">查看上次游戏</button>
+      ` : "";
     }
 
     function renderFeatured() {
@@ -474,8 +1229,43 @@
         <img class="featured-icon" src="${featured.icon}" alt="${featured.name}">
         <h3>${featured.name}</h3>
         <p>${featured.description || "马上开始游戏。"}</p>
-        <a class="play-link" href="${featured.url}" target="_blank" rel="noopener">开始游戏</a>
+        <div class="recent-actions">
+          <a class="play-link" href="${launchUrl(gameIndex(featured))}" target="_blank" rel="noopener">开始游戏</a>
+          <button class="icon-button favorite-button ${isFavorite(featured) ? "active" : ""}" type="button" data-favorite-index="${gameIndex(featured)}" title="${favoriteLabel(featured)}">
+            <span aria-hidden="true">${favoriteGlyph(featured)}</span>
+            <span class="sr-only">${favoriteLabel(featured)}</span>
+          </button>
+        </div>
       `;
+    }
+
+    function renderRecent() {
+      const items = recentGames();
+      recentSection.hidden = !items.length;
+      recentCount.textContent = `${items.length} 款`;
+      recentGrid.innerHTML = items.map((game) => `
+        <article class="recent-card">
+          <img src="${game.icon}" alt="${game.name}">
+          <div>
+            <div class="meta">
+              <span class="tag">${game.category}</span>
+              <span class="rating">★ ${game.rating || "4.5"}</span>
+            </div>
+            <h3>${game.name}</h3>
+            <div class="recent-actions">
+              <a class="play-link" href="${launchUrl(gameIndex(game))}" target="_blank" rel="noopener">继续</a>
+              <button class="icon-button" type="button" data-detail-index="${gameIndex(game)}" title="详情">
+                <span aria-hidden="true">i</span>
+                <span class="sr-only">详情</span>
+              </button>
+              <button class="icon-button favorite-button ${isFavorite(game) ? "active" : ""}" type="button" data-favorite-index="${gameIndex(game)}" title="${favoriteLabel(game)}">
+                <span aria-hidden="true">${favoriteGlyph(game)}</span>
+                <span class="sr-only">${favoriteLabel(game)}</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      `).join("");
     }
 
     function renderFilters() {
@@ -489,7 +1279,10 @@
     function getVisibleGames() {
       const keyword = searchInput.value.trim().toLowerCase();
       return games.filter((game) => {
-        const matchesCategory = activeCategory === "全部" || game.category === activeCategory;
+        const matchesCategory =
+          activeCategory === allCategory ||
+          (activeCategory === favoriteCategory && isFavorite(game)) ||
+          game.category === activeCategory;
         const matchesKeyword = !keyword ||
           game.name.toLowerCase().includes(keyword) ||
           game.category.toLowerCase().includes(keyword);
@@ -505,6 +1298,10 @@
         <article class="card">
           <div class="card-media">
             <img src="${game.icon}" alt="${game.name}">
+            <button class="icon-button favorite-button ${isFavorite(game) ? "active" : ""}" type="button" data-favorite-index="${gameIndex(game)}" title="${favoriteLabel(game)}">
+              <span aria-hidden="true">${favoriteGlyph(game)}</span>
+              <span class="sr-only">${favoriteLabel(game)}</span>
+            </button>
           </div>
           <div class="card-body">
             <div class="meta">
@@ -512,10 +1309,55 @@
               <span class="rating">★ ${game.rating || "4.5"}</span>
             </div>
             <h3>${game.name}</h3>
-            <a class="play-link" href="${game.url}" target="_blank" rel="noopener">开始游戏</a>
+            <div class="card-actions">
+              <a class="play-link" href="${launchUrl(gameIndex(game))}" target="_blank" rel="noopener">开始游戏</a>
+              <button class="icon-button" type="button" data-detail-index="${gameIndex(game)}" title="详情">
+                <span aria-hidden="true">i</span>
+                <span class="sr-only">详情</span>
+              </button>
+            </div>
           </div>
         </article>
       `).join("");
+    }
+
+    function openDetail(index) {
+      const game = games[index];
+      if (!game) return;
+
+      activeDetailIndex = index;
+      detailContent.innerHTML = `
+        <div class="modal-head">
+          <img src="${game.icon}" alt="${game.name}">
+          <div>
+            <h2 id="detailTitle">${game.name}</h2>
+            <div class="modal-meta">
+              <span>${game.category}</span>
+              <span>★ ${game.rating || "4.5"}</span>
+              <span>${isFavorite(game) ? "已收藏" : "未收藏"}</span>
+            </div>
+          </div>
+          <button class="icon-button" type="button" data-close-detail title="关闭">
+            <span aria-hidden="true">×</span>
+            <span class="sr-only">关闭</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>${game.description || "马上开始游戏。"}</p>
+          <div class="modal-actions">
+            <a class="play-link" href="${launchUrl(index)}" target="_blank" rel="noopener">开始游戏</a>
+            <button class="secondary-link favorite-button ${isFavorite(game) ? "active" : ""}" type="button" data-favorite-index="${index}">
+              ${favoriteGlyph(game)} ${favoriteLabel(game)}
+            </button>
+          </div>
+        </div>
+      `;
+      detailModal.hidden = false;
+    }
+
+    function closeDetail() {
+      detailModal.hidden = true;
+      activeDetailIndex = null;
     }
 
     filters.addEventListener("click", (event) => {
@@ -528,9 +1370,37 @@
 
     searchInput.addEventListener("input", renderGames);
 
+    document.addEventListener("click", (event) => {
+      const favoriteButton = event.target.closest("[data-favorite-index]");
+      if (favoriteButton) {
+        const game = games[Number(favoriteButton.dataset.favoriteIndex)];
+        if (game) toggleFavorite(game);
+        return;
+      }
+
+      const detailButton = event.target.closest("[data-detail-index]");
+      if (detailButton) {
+        openDetail(Number(detailButton.dataset.detailIndex));
+        return;
+      }
+
+      if (event.target.closest("[data-close-detail]") || event.target === detailModal) {
+        closeDetail();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !detailModal.hidden) {
+        closeDetail();
+      }
+    });
+
+    renderHeroActions();
     renderFeatured();
+    renderRecent();
     renderFilters();
     renderGames();
+    }
   </script>
 </body>
 </html>

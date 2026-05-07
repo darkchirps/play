@@ -16,8 +16,8 @@ window.GAME_CONFIG = [
   {
     name: "闯关专家",
     category: "肉鸽",
-    icon: "./PassingExpert/favicon.8de18.ico",
-    url: "./PassingExpert/index.html",
+    icon: "./PassExpert/favicon.8de18.ico",
+    url: "./PassExpert/index.html",
     rating: "4.9",
     featured: true,
     description: "点击即可进入本地 PassingExpert 游戏。"
