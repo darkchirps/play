@@ -30,12 +30,12 @@ window.GAME_CONFIG = [
     description: "割草击打节奏感强，适合喜欢挑战的玩家。"
   },
   {
-    name: "泡泡龙",
+    name: "箭头消除",
     category: "休闲",
-    icon: "./PuzzleBobble/favicon.8de18.ico",
-    url: "./PuzzleBobble/index.html",
-    rating: "4.8",
-    description: "无限制休闲泡泡龙，适合放松心情。"
+    icon: "./Arrows/favicon.ico",
+    url: "./Arrows/index.html",
+    rating: "4.9",
+    description: "点击箭头进行消除，适合喜欢动脑的玩家。"
   },
   {
     name: "幽灵射手",
@@ -93,5 +93,13 @@ window.GAME_CONFIG = [
     url: "./MergeMine/index.html",
     rating: "4.9",
     description: "合成矿石完成任务，适合喜欢合成和经营的玩家。"
+  },
+  {
+    name: "泡泡龙",
+    category: "休闲",
+    icon: "./PuzzleBobble/favicon.8de18.ico",
+    url: "./PuzzleBobble/index.html",
+    rating: "4.8",
+    description: "无限制休闲泡泡龙，适合放松心情。"
   }
 ];
