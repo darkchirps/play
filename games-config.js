@@ -30,14 +30,6 @@ window.GAME_CONFIG = [
     description: "割草击打节奏感强，适合喜欢挑战的玩家。"
   },
   {
-    name: "箭头消除",
-    category: "休闲",
-    icon: "./Arrows/favicon.ico",
-    url: "./Arrows/index.html",
-    rating: "4.9",
-    description: "点击箭头进行消除，适合喜欢动脑的玩家。"
-  },
-  {
     name: "幽灵射手",
     category: "冒险",
     icon: "./PhantomMarksman/favicon.ico",
@@ -62,6 +54,23 @@ window.GAME_CONFIG = [
     description: "建造海上基地去冒险收集，适合喜欢创造经营的玩家。"
   },
   {
+    name: "矿井合成",
+    category: "休闲",
+    icon: "./MergeMine/favicon.8de18.ico",
+    url: "./MergeMine/index.html",
+    rating: "4.9",
+    featured: true,
+    description: "合成矿石完成任务，适合喜欢合成和经营的玩家。"
+  },
+  {
+    name: "箭头消除",
+    category: "休闲",
+    icon: "./Arrows/favicon.ico",
+    url: "./Arrows/index.html",
+    rating: "4.9",
+    description: "点击箭头进行消除，适合喜欢动脑的玩家。"
+  },
+  {
     name: "打螺丝",
     category: "休闲",
     icon: "./Screw/favicon.8de18.ico",
@@ -83,16 +92,7 @@ window.GAME_CONFIG = [
     icon: "./Immortal/favicon.ico",
     url: "./Immortal/index.html",
     rating: "4.8",
-    featured: true,
     description: "割草类修仙风格，适合喜欢东方题材的玩家。"
-  },
-  {
-    name: "矿井合成",
-    category: "休闲",
-    icon: "./MergeMine/favicon.8de18.ico",
-    url: "./MergeMine/index.html",
-    rating: "4.9",
-    description: "合成矿石完成任务，适合喜欢合成和经营的玩家。"
   },
   {
     name: "泡泡龙",
