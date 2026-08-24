@@ -105,7 +105,6 @@ window.GAME_CONFIG = [
   {
     name: "试玩",
     category: "冒险",
-    icon: "./Shiwan/favicon.ico",
     url: "./Shiwan3d/index.html",
     rating: "4.8",
     description: "冒险闯关选择技能，适合喜欢策略的玩家。"
