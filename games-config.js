@@ -29,14 +29,14 @@ window.GAME_CONFIG = [
   //   rating: "4.7",
   //   description: "割草击打节奏感强，适合喜欢挑战的玩家。"
   // },
-  {
-    name: "幽灵射手",
-    category: "冒险",
-    icon: "./PhantomMarksman/favicon.ico",
-    url: "./Shiwan/index.html",
-    rating: "4.8",
-    description: "冒险闯关选择技能，适合喜欢策略的玩家。"
-  },
+  // {
+  //   name: "幽灵射手",
+  //   category: "冒险",
+  //   icon: "./PhantomMarksman/favicon.ico",
+  //   url: "./PhantomMarksman/index.html",
+  //   rating: "4.8",
+  //   description: "冒险闯关选择技能，适合喜欢策略的玩家。"
+  // },
   {
     name: "卡牌接龙",
     category: "益智",
@@ -101,5 +101,13 @@ window.GAME_CONFIG = [
     url: "./PuzzleBobble/index.html",
     rating: "4.8",
     description: "无限制休闲泡泡龙，适合放松心情。"
-  }
+  },
+  {
+    name: "试玩",
+    category: "冒险",
+    icon: "./Shiwan/favicon.ico",
+    url: "./Shiwan/index.html",
+    rating: "4.8",
+    description: "冒险闯关选择技能，适合喜欢策略的玩家。"
+  },
 ];
