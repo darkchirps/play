@@ -109,4 +109,11 @@ window.GAME_CONFIG = [
     rating: "4.8",
     description: "冒险闯关选择技能，适合喜欢策略的玩家。"
   },
+  {
+    name: "试玩打螺丝",
+    category: "冒险",
+    url: "./shiwan_dls/index.html",
+    rating: "4.8",
+    description: "冒险闯关选择技能，适合喜欢策略的玩家。"
+  },
 ];
